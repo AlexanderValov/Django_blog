@@ -16,7 +16,7 @@
 ----------
 3. Система авторизации    
 ----------
-4. Личный кабинет - **custom user model with 'abstract' tech (first_name, last_name, email, bio, location, birth_date**) 
+4. Личный кабинет - **custom user model (first_name, last_name, email, bio, location, birth_date**) 
 ----------
 5. Система форума (Модератор или админ может создавать топик, остальные пользователи могут его комментировать(время / кем написан))
 ----------
