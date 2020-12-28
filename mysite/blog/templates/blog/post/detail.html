@@ -1,0 +1,48 @@
+{% extends "blog/base.html" %}
+{% load has_group %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+  <h1>{{ post.title }}</h1>
+  {% if request.user|has_group:"moderators"  or request.user|has_group:"admins" %}
+  <a href='{{ post.get_absolute_url }}update_post'>Update post</a> | 
+  <a href='{{ post.get_absolute_url }}delete_post'>Delete post</a>
+  {% endif %}
+  <p class="date">
+    Published {{ post.publish }} by {{ post.author }}
+    {% if post.created == post.updated %}
+    <p class="date">Post wasn't updated yet</p>
+    {% else %}
+    <p class="date">Post was updated {{ post.updated }}</p>
+    {% endif %}
+  </p>
+  {{ post.body|linebreaks }}
+  {% with comments.count as total_comments %}
+    <h2>
+      {{ total_comments }} comment{{ total_comments|pluralize }}
+    </h2>
+  {% endwith %}
+  {% for comment in comments %}
+    <div class="comment">
+      <p class="info">
+        Comment {{ forloop.counter }} by {{ comment.name }}
+        {{ comment.created }}
+      </p>
+      {{ comment.body|linebreaks }}
+    </div>
+  {% empty %}
+    <p>There are no comments yet.</p>
+  {% endfor %}
+    {% if user.is_authenticated %}
+    <h2>Add a new comment, {{user}}</h2>
+        <form action="." method="post">
+            {{ comment_form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Add comment"></p>
+        </form>
+      {% else %}
+      <p>Please login to create a new comment</p>
+          <a href='{% url "account_login" %}'>Login</a>
+          <a href='{% url "account_signup" %}'>Registration</a>
+      {% endif %}
+{% endblock %}

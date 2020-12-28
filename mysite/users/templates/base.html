@@ -1,0 +1,26 @@
+{% load static %} 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+</head>
+<body>
+  <div id="content">
+    {% block content %}
+    {% endblock %}
+  </div>
+  <div id="sidebar">
+    <h2>Blog</h2><br>
+      {% if user.is_authenticated %}
+          <p>Hello, {{user}}. Do you want create a <a href='{% url "blog:add_post" %}'>new post?</a></p>
+          <a href='{% url "account_logout" %}'>Logout</a>
+      {% else %}
+          <a href='{% url "account_login" %}'>Login</a>
+          <a href='{% url "account_signup" %}'>Registration</a>
+      {% endif %}
+      <p> <a href='/'>Main page</a> | <a href='{% url "users:profile" %}'>Profile</a></p>
+      <p>Use <a href="{% url 'blog:post_search' %}">search</a></p>
+  </div>
+</body>
+</html>
