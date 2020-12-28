@@ -26,4 +26,4 @@
 ----------
 8. Добавлена функция постраниченго отображения статей (по 3 шт на странице)
 ----------
-Django blog with CRUD, registration/authentication,  search, filters, role, custom user model, comments and other.
+**Django blog with CRUD, registration/authentication,  search, filters, role, custom user model, comments and other.**
