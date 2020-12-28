@@ -1,6 +1,4 @@
 # Django_blog
-Django blog with CRUD, registration/authentication,  search, filters, role, custom user model, comments and other.
-----------
 
 На сайте реализован следующий функционал:
 1. **CRUD**
@@ -27,3 +25,5 @@ Django blog with CRUD, registration/authentication,  search, filters, role, cust
 7. Система поиска по статьям с ранжирование, чем чаще встречается тем выше
 ----------
 8. Добавлена функция постраниченго отображения статей (по 3 шт на странице)
+----------
+Django blog with CRUD, registration/authentication,  search, filters, role, custom user model, comments and other.
